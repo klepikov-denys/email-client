@@ -5,6 +5,7 @@ import Navi from './navigation/Navi'
 import ButtonBar from './buttonBar/ButtonBar'
 import {Route, Switch, BrowserRouter as Router, Link} from 'react-router-dom'
 import Compose from './compose/Compose'
+import Message from './message/Massage'
 
 var allMailsArr = require('./mails/mails.json')
 
@@ -57,12 +58,13 @@ class App extends React.Component{
       let textPreview = mail.text.slice(0,42) + '...';
 
       return(
-        <Mail 
-          key = {index}
-          senderName = {mail.sender}
-          mailText = {textPreview}
-          
-        />
+        <Link to={`/mail/${index}`}>
+          <Mail 
+            key = {index}
+            senderName = {mail.sender}
+            mailText = {textPreview}    
+          />
+        </Link>
       )
     } 
       
@@ -84,6 +86,7 @@ class App extends React.Component{
 
             <Switch>
               <Route path='/compose' component={Compose} />
+              <Route path='/mail/:id' component={Message} />
             
               <Route exact path ='/'>
                 <aside className='mainContentSidebar'>

@@ -1,0 +1,45 @@
+
+
+
+
+
+[{"sender":"Jack Sparrow",
+  "text":"Hello Dan! I'm writing you just to make sure that you remember about my Bday.",
+  "type":"INBOX"
+ },
+
+ {"sender":"Jack Sparrow",
+  "text":"Hello Dan! I'm writing you just to make sure that you remember about my Bday.",
+  "type":"IMPORTANT"
+ },
+
+ {"sender":"Dan Sparrow",
+  "text":"Hello Dan! I'm writing you just to make sure that you remember about my Bday.",
+  "type":"SENT"
+ },
+
+ {"sender":"Nick Sparrow",
+  "text":"Hello Dan! I'm writing you just to make sure that you remember about my Bday.",
+  "type":"TRASH"
+ },
+
+ {"sender":"Sunny Sparrow",
+  "text":"Hello Dan! I'm writing you just to make sure that you remember about my Bday.",
+  "type":"IMPORTANT"
+ },
+
+ {"sender":"Pete Sparrow",
+  "text":"Hello Dan! I'm writing you just to make sure that you remember about my Bday.",
+  "type":"SENT"
+ },
+
+ {"sender":"Nate Sparrow",
+  "text":"Hello Dan! I'm writing you just to make sure that you remember about my Bday.",
+  "type":"INBOX"
+ },
+ 
+ {"sender":"Bill Sparrow",
+  "text":"Hello Dan! I'm writing you just to make sure that you remember about my Bday.",
+  "type":"INBOX"
+ }
+]

@@ -1,26 +1,120 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Mail from './mails/Mail'
+import Navi from './navigation/Navi'
+import ButtonBar from './buttonBar/ButtonBar'
+import {Route, Switch, BrowserRouter as Router, Link} from 'react-router-dom'
+import Compose from './compose/Compose'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+var allMailsArr = require('./mails/mails.json')
+
+class App extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      mails: allMailsArr,
+      btnState: [true, true, true, true]
+    }
+
+    this.handleNaviClick = this.handleNaviClick.bind(this)
+    this.baseState = this.state
+  }  
+
+  
+
+
+  handleNaviClick(arg){
+    
+
+    switch (arg){
+      case 'INBOX':
+        this.setState({mails: this.baseState.mails.filter((obj) => obj.type === 'INBOX'),
+          btnState: this.baseState.btnState.map((bool, index) => index === 0 ? !bool : bool)})
+        
+        break;
+      case 'IMPORTANT':
+        this.setState({mails:this.baseState.mails.filter((obj) => obj.type === 'IMPORTANT'),
+        btnState: this.baseState.btnState.map((bool, index) => index === 1 ? !bool : bool)})
+        break;
+      case 'SENT':
+        this.setState({mails: this.baseState.mails.filter((obj) => obj.type === 'SENT'),
+        btnState: this.baseState.btnState.map((bool, index) => index === 2 ? !bool : bool)})
+        break;
+      default:
+        this.setState({mails: this.baseState.mails.filter((obj) => obj.type === 'TRASH'),
+        btnState: this.baseState.btnState.map((bool, index) => index === 3 ? !bool : bool)})
+    }
+  }
+
+
+  
+
+  render(){
+    
+    
+
+    let mails = this.state.mails.map((mail, index) =>{
+      let textPreview = mail.text.slice(0,42) + '...';
+
+      return(
+        <Mail 
+          key = {index}
+          senderName = {mail.sender}
+          mailText = {textPreview}
+          
+        />
+      )
+    } 
+      
+    )
+
+    return (
+      <Router>
+        <div className="App">
+          <header className="App-header">
+            <Link to='/'>
+              <img className="App-logo" src="https://img.icons8.com/plasticine/100/000000/email.png" alt="Mail Logo"></img>
+            </Link>
+
+            <p className='userEmail'>den@gmail.com</p>
+            
+          </header>
+
+          <div className='mainContentWrapper'>
+
+            <Switch>
+              <Route path='/compose' component={Compose} />
+            
+              <Route exact path ='/'>
+                <aside className='mainContentSidebar'>
+                  <Navi 
+                    handleClick = {this.handleNaviClick}
+                    btnState = {this.state.btnState}
+                  />
+                </aside>
+
+                <main className='mainContent'>
+                  <div className='mainButtonsBar'>
+                    <ButtonBar />
+                  </div>
+                  <hr></hr>
+                  <div className='mainContentMails'>
+                    {mails}
+                  </div>
+
+                </main>
+              </Route>
+            </Switch>
+          </div> 
+
+
+        </div>
+        
+
+        </Router>
+      
+    );
+  }
 }
 
 export default App;

@@ -1,38 +1,50 @@
-.App {
-  text-align: center;
+.App-header{
+  background-color: rgb(184, 184, 184);
+  height: 80px;
+  border-radius: 0 0 8px 8px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App-logo{
+  height: 80px;
+  cursor: pointer;
+  margin: 0 0 0 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.userEmail{
+  margin: 25px;
+  float: right;
+  cursor:pointer; 
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.userEmail:hover{
+  color: rgb(19, 41, 136);
 }
 
-.App-link {
-  color: #61dafb;
+.mainContentWrapper{
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) minmax(300px, 2fr);
+  
+  grid-template-rows: 100vh;
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.mainContentSidebar{
+  background-color: rgb(223, 227, 247);
+  
+}
+
+.mainContent{
+  background-color: rgb(223, 227, 247);
+  
+}
+
+.mainButtonsBar{
+  height: 40px;
+  
+}
+
+.mainContentMails{
+  background-color: #ffffff;
+  margin-right: 10px;
+  
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './compose.css'
 function Compose (){
     
     

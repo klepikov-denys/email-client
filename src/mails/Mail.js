@@ -4,8 +4,8 @@ import React from 'react'
 
 
 function Mail(props){
-    let name = props.senderName
-    let text = props.mailText
+    let [name, text, type]= [props.senderName, props.mailText, props.type]
+    let preposition = type === 'SENT'? 'To: ' : ''
     
     let style = {
         height: '10%',
@@ -22,7 +22,7 @@ function Mail(props){
 
     return(
         <div style = {style}>
-            <p style = {{flex:'1', textAlign:'center'}}>{name}</p>
+            <p style = {{flex:'1', textAlign:'center'}}>{preposition}{name}</p>
             <p style = {{flex:'2', textAlign:'center'}}>{text}</p>
         </div>
     )

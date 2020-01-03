@@ -56,13 +56,13 @@ class App extends React.Component{
 
     let mails = this.state.mails.map((mail, index) =>{
       let textPreview = mail.text.slice(0,42) + '...';
-
+      let id = mail.id
       return(
-        <Link to={`/mail/${index}`}>
+        <Link to={`/mail/${id}`} key={id} >
           <Mail 
-            key = {index}
             senderName = {mail.sender}
-            mailText = {textPreview}    
+            mailText = {textPreview} 
+            type = {mail.type}   
           />
         </Link>
       )
@@ -83,18 +83,19 @@ class App extends React.Component{
           </header>
 
           <div className='mainContentWrapper'>
+            <aside className='mainContentSidebar'>
+              <Navi 
+                handleClick = {this.handleNaviClick}
+                btnState = {this.state.btnState}
+              />
+            </aside>
 
             <Switch>
               <Route path='/compose' component={Compose} />
               <Route path='/mail/:id' component={Message} />
             
               <Route exact path ='/'>
-                <aside className='mainContentSidebar'>
-                  <Navi 
-                    handleClick = {this.handleNaviClick}
-                    btnState = {this.state.btnState}
-                  />
-                </aside>
+                
 
                 <main className='mainContent'>
                   <div className='mainButtonsBar'>

@@ -48,3 +48,8 @@
   margin-right: 10px;
   
 }
+
+.app-link{
+  text-decoration: none;
+  color: black;
+}

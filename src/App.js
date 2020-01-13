@@ -14,7 +14,7 @@ class App extends React.Component{
     super(props)
     this.state = {
       mails: allMailsArr,
-      btnState: [true, true, true, true]
+      btnState: Array(4).fill(true)
     }
 
     this.handleNaviClick = this.handleNaviClick.bind(this)

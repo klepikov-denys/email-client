@@ -6,17 +6,21 @@ import ButtonBar from './buttonBar/ButtonBar'
 import {Route, Switch, BrowserRouter as Router, Link} from 'react-router-dom'
 import Compose from './compose/Compose'
 import Message from './message/Massage'
+import { connect } from 'react-redux'
+import {filterMails} from './actions/filteringAction'
 
-var allMailsArr = require('./mails/mails.json')
+
+
 
 class App extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      mails: allMailsArr,
+      mails: this.props.mails,
       btnState: Array(4).fill(true)
     }
 
+    
     this.handleNaviClick = this.handleNaviClick.bind(this)
     this.baseState = this.state
   }  
@@ -29,21 +33,26 @@ class App extends React.Component{
 
     switch (arg){
       case 'INBOX':
-        this.setState({mails: this.baseState.mails.filter((obj) => obj.type === 'INBOX'),
+        this.setState({
           btnState: this.baseState.btnState.map((bool, index) => index === 0 ? !bool : bool)})
-        
+        this.props.filterMails('INBOX')
         break;
       case 'IMPORTANT':
-        this.setState({mails:this.baseState.mails.filter((obj) => obj.type === 'IMPORTANT'),
-        btnState: this.baseState.btnState.map((bool, index) => index === 1 ? !bool : bool)})
+        this.setState({
+          btnState: this.baseState.btnState.map((bool, index) => index === 1 ? !bool : bool)})
+        this.props.filterMails('IMPORTANT')
         break;
       case 'SENT':
-        this.setState({mails: this.baseState.mails.filter((obj) => obj.type === 'SENT'),
-        btnState: this.baseState.btnState.map((bool, index) => index === 2 ? !bool : bool)})
+        this.setState({
+          btnState: this.baseState.btnState.map((bool, index) => index === 2 ? !bool : bool)})
+        this.props.filterMails('SENT')
         break;
-      default:
-        this.setState({mails: this.baseState.mails.filter((obj) => obj.type === 'TRASH'),
-        btnState: this.baseState.btnState.map((bool, index) => index === 3 ? !bool : bool)})
+      case 'TRASH':
+        this.setState({
+          btnState: this.baseState.btnState.map((bool, index) => index === 3 ? !bool : bool)})
+        this.props.filterMails('TRASH') 
+        break;
+      default: return this.state
     }
   }
 
@@ -52,9 +61,9 @@ class App extends React.Component{
 
   render(){
     
-    
+    console.log(this.props.mails)
 
-    let mails = this.state.mails.map((mail, index) =>{
+    let mails = this.props.mails.map((mail, index) =>{
       let textPreview = mail.text.slice(0,42) + '...';
       let id = mail.id
       return(
@@ -121,4 +130,18 @@ class App extends React.Component{
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    filterMails: (prop) => {
+      dispatch(filterMails(prop));
+    }
+  }
+}
+
+const mapStateToProps = (state) => {
+  return{
+    mails: state.mails
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

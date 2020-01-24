@@ -93,10 +93,12 @@ class App extends React.Component{
 
           <div className='mainContentWrapper'>
             <aside className='mainContentSidebar'>
-              <Navi 
-                handleClick = {this.handleNaviClick}
-                btnState = {this.state.btnState}
-              />
+              <Link to='/'>
+                <Navi 
+                  handleClick = {this.handleNaviClick}
+                  btnState = {this.state.btnState}
+                />
+              </Link>
             </aside>
 
             <Switch>

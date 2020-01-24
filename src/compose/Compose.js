@@ -8,7 +8,7 @@ function Compose (){
 
     const [state, setState] = useState({
         wordCapacity: 200,
-        sender: '',
+        recipient: '',
         text: '',
         subject: '',
     })
@@ -18,10 +18,10 @@ function Compose (){
     
     const submitHandler = (event) => {
         event.preventDefault()
-        dispatch(addMail(state.sender, state.text, mailsCpsty))
+        dispatch(addMail(state.recipient, state.text, mailsCpsty, state.subject))
         setState({
         wordCapacity: 200,
-        sender: ' ',
+        recipient: ' ',
         text: ' ',
         subject: ' ',
     })
@@ -32,7 +32,7 @@ function Compose (){
         case 'email': 
             setState({
                 wordCapacity: 200,
-                sender: event.target.value,
+                recipient: event.target.value,
                 text: ' ',
                 subject: ' ',})
             console.log(event.target.name)
@@ -40,7 +40,7 @@ function Compose (){
         case 'subject':
             setState({
                 wordCapacity: 200,
-                sender: state.sender,
+                recipient: state.recipient,
                 text: ' ',
                 subject: event.target.value,})
             console.log(event.target.name)
@@ -49,7 +49,7 @@ function Compose (){
             console.log(event.target.name)
             setState({
                 wordCapacity: 200 - event.target.value.length,
-                sender: state.sender,
+                recipient: state.recipient,
                 text: event.target.value,
                 subject: state.subject,})
             break;
@@ -63,7 +63,7 @@ function Compose (){
                 To:
                 <input 
                     type='text' name='email' 
-                    className='cmps-input' value={state.sender}
+                    className='cmps-input' value={state.recipient}
                     onChange={inputHandler}
                 />
             </label>

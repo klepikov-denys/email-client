@@ -15,7 +15,9 @@ const mailList = (state = initialState, action) => {
             newMails: [
                 ...state.newMails,  
                 {
-                sender: action.sender,
+                sender: 'den@gmail.com',
+                recipient: action.recipient,
+                subject: action.subject,
                 text: action.text,
                 type: 'SENT',
                 id : action.id

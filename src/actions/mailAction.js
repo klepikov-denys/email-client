@@ -1,10 +1,11 @@
 
 export const addMail = (...args) =>{
-    console.log(args[0], args[1], args[2])
+    console.log(args[0], args[1], args[2], args[3])
     return {
         type:'SENDING',
-        sender: args[0],
+        recipient: args[0],
         text: args[1],
-        id: args[2]
+        id: args[2],
+        subject: args[3]
     }
 }

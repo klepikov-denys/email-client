@@ -5,7 +5,7 @@ import Navi from './navigation/Navi'
 import ButtonBar from './buttonBar/ButtonBar'
 import {Route, Switch, BrowserRouter as Router, Link} from 'react-router-dom'
 import Compose from './compose/Compose'
-import Message from './message/Massage'
+import Message from './message/Message.js'
 import { connect } from 'react-redux'
 import {filterMails} from './actions/filteringAction'
 
@@ -16,11 +16,9 @@ class App extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      mails: this.props.mails,
       btnState: Array(4).fill(true)
     }
 
-    
     this.handleNaviClick = this.handleNaviClick.bind(this)
     this.baseState = this.state
   }  
@@ -63,7 +61,7 @@ class App extends React.Component{
     
     console.log(this.props.mails)
 
-    let mails = this.props.mails.map((mail, index) =>{
+    let mails = this.props.mails.map((mail) =>{
       let textPreview = mail.text.slice(0,42) + '...';
       let id = mail.id
       return(
@@ -71,7 +69,8 @@ class App extends React.Component{
           <Mail 
             senderName = {mail.sender}
             mailText = {textPreview} 
-            type = {mail.type}   
+            type = {mail.type} 
+            recipientName = {mail.recipient}  
           />
         </Link>
       )

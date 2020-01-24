@@ -13,9 +13,22 @@ export default function Message({ match }){
     
     return(
         <div className={'wrapper'}>
-            <p className ={'textFields'}>To: {mail.recipient === 'den@gmail.com' ? 'You' : mail.recipient } </p>
-            <p className ={'textFields'}>From: {mail.sender === 'den@gmail.com' ? 'You' : mail.sender } </p>
-            <p className ={'textFields'}>{mail.text}</p>
+            <p className ={'textFields'}>
+                <strong>To: </strong>
+                {mail.recipient === 'den@gmail.com' ? 'You' : mail.recipient } 
+            </p>
+            
+            <p className ={'textFields'}>
+                <strong>From: </strong>
+                {mail.sender === 'den@gmail.com' ? 'You' : mail.sender } 
+            </p>
+
+            <p className ={'textFields lastField'}>
+                <strong>Subject: </strong>
+                {mail.subject}
+            </p>
+
+            <p className ={'textFields message'}>{mail.text}</p>
             
         </div>
     )

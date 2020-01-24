@@ -23,8 +23,8 @@
 .mainContentWrapper{
   display: grid;
   grid-template-columns: minmax(200px, 1fr) minmax(300px, 2fr);
-  
-  grid-template-rows: 100vh;
+  background-color: rgb(223, 227, 247);
+  grid-template-rows: 105vh;
   
 }
 

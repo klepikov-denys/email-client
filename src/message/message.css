@@ -8,8 +8,20 @@
 }
 
 .textFields{
-    margin: 10px 0;
+    margin: 0;
     background-color: white;
     padding: 10px;
+    border: dashed 1px black;
+    border-bottom: none;
+    border-radius: 5px;
 }
 
+.lastField{
+    border-bottom: dashed 1px black;
+}
+
+.message{
+    margin-top: 15px;
+    height: 40vh;
+    border: none;
+}

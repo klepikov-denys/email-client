@@ -140,7 +140,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return{
-    mails: state.mails
+    mails: state.allMails
   }
 }
 

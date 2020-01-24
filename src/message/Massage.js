@@ -1,13 +1,14 @@
 import React from 'react' 
-import mails from '../mails/mails'
+import { useSelector } from 'react-redux'
 import './massage.css'
-
+import { oldMails } from '../mails/oldMails'
 
 
 
 export default function Message({ match }){
+    const allMails = oldMails.concat(useSelector(state => state.newMails))
 
-    const mail = mails[match.params.id]
+    const mail = allMails[match.params.id]
 
     let [namePreposition, emailPreposition, email, name]=['From: ', 'To: ', 'den@gmail.com', mail.sender]
    

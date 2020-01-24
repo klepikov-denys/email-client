@@ -2,8 +2,9 @@ import React, {useState} from 'react'
 import './compose.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { addMail } from '../actions/mailAction'
+import { oldMails } from '../mails/oldMails'
 function Compose (){
-    const mailsCpsty = useSelector(state => state.mails.length) + ''
+    const mailsCpsty = useSelector(state => state.newMails.length) + oldMails.length + ''
 
     const [state, setState] = useState({
         wordCapacity: 200,
@@ -50,7 +51,7 @@ function Compose (){
                 wordCapacity: 200 - event.target.value.length,
                 sender: state.sender,
                 text: event.target.value,
-                subject: state.sender,})
+                subject: state.subject,})
             break;
         default: break;
         }

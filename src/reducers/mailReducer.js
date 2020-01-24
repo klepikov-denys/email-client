@@ -1,66 +1,42 @@
+import { oldMails } from '../mails/oldMails'
+
+
 
 let initialState = {
-
-    mails:[{"sender":"Jack Sparrow",
-        "text":"Hello Dan! I'm writing you just to make sure that you remember about my Bday.",
-        "type":"INBOX",
-        "id":"0"
-        },
-
-        {"sender":"Jack Sparrow",
-        "text":"Hello Dan! I'm writing you just to make sure that you remember about my Bday.",
-        "type":"IMPORTANT",
-        "id":"1"
-        },
-
-        {"sender":"Dan Sparrow",
-        "text":"Hello Dan! I'm writing you just to make sure that you remember about my Bday.",
-        "type":"SENT",
-        "id":"2"
-        },
-
-        {"sender":"Nick Sparrow",
-        "text":"Hello Dan! I'm writing you just to make sure that you remember about my Bday.",
-        "type":"TRASH",
-        "id":"3"
-        },
-
-        {"sender":"Sunny Sparrow",
-        "text":"Hello Dan! I'm writing you just to make sure that you remember about my Bday.",
-        "type":"IMPORTANT",
-        "id":"4"
-        }
-]}
+    newMails: [],
+    allMails: oldMails,
+}
 
 
 const mailList = (state = initialState, action) => {
     switch (action.type) {
        case 'SENDING':
           return Object.assign({}, state,{ 
-            mails:[
-                ...state.mails,  
+            newMails: [
+                ...state.newMails,  
                 {
                 sender: action.sender,
                 text: action.text,
                 type: 'SENT',
                 id : action.id
                 }
-            ]});
+            ]
+        });
         case 'INBOX':
             return Object.assign({}, state, {
-                mails: state.mails.filter((obj) => obj.type === 'INBOX')
+                allMails: oldMails.concat(state.newMails).filter((obj) => obj.type === 'INBOX')
             })  
         case 'IMPORTANT':
             return Object.assign({}, state, {
-                mails: state.mails.filter((obj) => obj.type === 'IMPORTANT')
+                allMails: oldMails.concat(state.newMails).filter((obj) => obj.type === 'IMPORTANT')
             }) 
         case 'SENT':
             return Object.assign({}, state, {
-                mails: state.mails.filter((obj) => obj.type === 'SENT')
+                allMails: oldMails.concat(state.newMails).filter((obj) => obj.type === 'SENT')
             }) 
         case 'TRASH':
             return Object.assign({}, state, {
-                mails: state.mails.filter((obj) => obj.type === 'TRASH')
+                allMails: oldMails.concat(state.newMails).filter((obj) => obj.type === 'TRASH')
             })    
         default:
             return state;

@@ -73,6 +73,7 @@ class App extends React.Component{
             recipientName = {mail.recipient}
             key = {id}  
             id = {id}
+            checked = {mail.checked}
           />
       )
     } 

@@ -12,6 +12,7 @@ const mailList = (state = initialState, action) => {
     switch (action.type) {
        case 'SENDING':
           return Object.assign({}, state,{ 
+            
             newMails: [
                 ...state.newMails,  
                 {
@@ -43,7 +44,7 @@ const mailList = (state = initialState, action) => {
             })
         case 'CHECK_MAIL':
             return Object.assign({}, state, {
-                allMails: state.allMails.map((obj) => { 
+                allMails: state.allMails.concat().map((obj) => { 
                     if(obj.id === action.idNum){
                         obj.checked = !obj.checked
                     }
@@ -52,8 +53,8 @@ const mailList = (state = initialState, action) => {
             })
         case 'CHECK_ALL_MAILS':
             return Object.assign({}, state, {
-                allMails: state.allMails.map((obj) => { 
-                    obj.checked = true
+                allMails: state.allMails.concat().map((obj) => { 
+                    obj.checked = !obj.checked
                     return obj
                 })
             })

@@ -65,14 +65,15 @@ class App extends React.Component{
       let textPreview = mail.text.slice(0,42) + '...';
       let id = mail.id
       return(
-        <Link to={`/mail/${id}`} key={id} className={'app-link'}>
           <Mail 
+            className={'app-link'}
             senderName = {mail.sender}
             mailText = {textPreview} 
             type = {mail.type} 
-            recipientName = {mail.recipient}  
+            recipientName = {mail.recipient}
+            key = {id}  
+            id = {id}
           />
-        </Link>
       )
     } 
       

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addMail } from '../actions/mailAction'
 import { oldMails } from '../mails/oldMails'
 function Compose (){
-    const mailsCpsty = useSelector(state => state.newMails.length) + oldMails.length + ''
+    const mailsCpsty = useSelector(state => state.newMails.length) + oldMails.length
 
     const [state, setState] = useState({
         wordCapacity: 200,

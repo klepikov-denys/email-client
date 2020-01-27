@@ -20,7 +20,8 @@ const mailList = (state = initialState, action) => {
                 subject: action.subject,
                 text: action.text,
                 type: 'SENT',
-                id : action.id
+                id : action.id,
+                checked: false
                 }
             ]
         });
@@ -39,7 +40,24 @@ const mailList = (state = initialState, action) => {
         case 'TRASH':
             return Object.assign({}, state, {
                 allMails: oldMails.concat(state.newMails).filter((obj) => obj.type === 'TRASH')
-            })    
+            })
+        case 'CHECK_MAIL':
+            return Object.assign({}, state, {
+                allMails: state.allMails.map((obj) => { 
+                    if(obj.id === action.idNum){
+                        obj.checked = !obj.checked
+                    }
+                    return obj
+                })
+            })
+        case 'CHECK_ALL_MAILS':
+            return Object.assign({}, state, {
+                allMails: state.allMails.map((obj) => { 
+                    obj.checked = true
+                    return obj
+                })
+            })
+
         default:
             return state;
     }

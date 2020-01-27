@@ -18,3 +18,21 @@ flex-direction: row;
     flex: 2;
     text-align: center ;  
 }
+
+.mail-text-input{
+    flex: 1;
+    padding-left: 15px;
+}
+
+.mail-cont-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    
+}
+
+.link{
+    flex:25;
+    text-decoration: none;
+    color: black;
+}

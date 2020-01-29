@@ -1,4 +1,4 @@
-div .mail-wrapper{
+div .mailWrapper{
 height: 10%;
 border: 1px solid #a2a2a3;
 border-radius: 5px;
@@ -35,4 +35,9 @@ flex-direction: row;
     flex:25;
     text-decoration: none;
     color: black;
+}
+
+.deleted{
+    text-decoration: line-through;
+    opacity: 0.5;
 }

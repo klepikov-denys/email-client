@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Navi from './navigation/Navi'
-import ButtonBar from './buttonBar/ButtonBar'
+import ButtonBar from './buttonBar/ButtonBar.jsx'
 import {Route, Switch, BrowserRouter as Router, Link} from 'react-router-dom'
 import Compose from './compose/Compose'
 import Message from './message/Message.jsx'
@@ -78,7 +78,7 @@ class App extends React.Component{
 
                 <main className='mainContent'>
                   <div className='mainButtonsBar'>
-                    <ButtonBar />
+                    <ButtonBar filterType={this.state.filterType} />
                   </div>
                   <hr></hr>
                   <div className='mainContentMails'>

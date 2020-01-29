@@ -1,7 +1,8 @@
 
-export const checkAllMails = () => {
+export const checkAllMails = (filterType) => {
 
     return {
-        type: 'CHECK_ALL_MAILS'
+        type: 'CHECK_ALL_MAILS',
+        filterType
     }
 }

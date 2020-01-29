@@ -2,14 +2,14 @@ import React from 'react'
 import Mail from './Mail'
 
 
-function MailsList (props) {
 
+
+function MailsList (props) {
      let filteredMails = props.filteredMails.map((mail) => {
         let textPreview = mail.text.slice(0,42) + '...';
         let id = mail.id 
         return(
             <Mail
-            className = {'app-link'}
             sender = {mail.sender}
             text = {textPreview} 
             type = {mail.type} 

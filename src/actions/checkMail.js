@@ -1,7 +1,7 @@
-export const checkMails = (ownProp) =>{
+export const checkMails = (id) =>{
 
     return {
         type: 'CHECK_MAIL', 
-        idNum: ownProp,
+        id,
     }
 }

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { checkMails } from '../actions/checkMail'
 import PropTypes from 'prop-types' 
+import classNames from 'classnames'
 
 
 
@@ -11,12 +12,19 @@ import PropTypes from 'prop-types'
 function Mail({sender, text, type, recipient, id, checked}){
     let name = type === 'SENT'? `To: ${recipient}` : `${sender}`
     const dispatch = useDispatch()
+    const style = classNames({
+        mailWrapper: true,
+        deleted: type === 'TRASH' 
+      })
   
     
     return(
-        <div className={'mail-wrapper'}>
+        <div className={style}>
             <form className='mail-text-input'>
-                <input type='checkbox' checked={checked} onChange={() => dispatch(checkMails(id))}></input>
+                <input type='checkbox' checked={checked}
+                onChange={() => dispatch(checkMails(id))}
+                disabled={type === 'TRASH'}
+                ></input>
             </form>
 
             <Link to={`/mail/${id}`}  className={'link'}>

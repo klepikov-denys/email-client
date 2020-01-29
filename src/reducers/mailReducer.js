@@ -3,7 +3,6 @@ import { oldMails } from '../mails/oldMails'
 
 
 let initialState = {
-    newMails: [],
     allMails: oldMails,
 }
 
@@ -13,8 +12,8 @@ const mailList = (state = initialState, action) => {
        case 'SENDING':
           return Object.assign({}, state,{ 
             
-            newMails: [
-                ...state.newMails,  
+            allMails: [
+                ...state.allMails,  
                 {
                 sender: 'den@gmail.com',
                 recipient: action.recipient,
@@ -26,22 +25,7 @@ const mailList = (state = initialState, action) => {
                 }
             ]
         });
-        case 'INBOX':
-            return Object.assign({}, state, {
-                allMails: oldMails.concat(state.newMails).filter((obj) => obj.type === 'INBOX')
-            })  
-        case 'IMPORTANT':
-            return Object.assign({}, state, {
-                allMails: oldMails.concat(state.newMails).filter((obj) => obj.type === 'IMPORTANT')
-            }) 
-        case 'SENT':
-            return Object.assign({}, state, {
-                allMails: oldMails.concat(state.newMails).filter((obj) => obj.type === 'SENT')
-            }) 
-        case 'TRASH':
-            return Object.assign({}, state, {
-                allMails: oldMails.concat(state.newMails).filter((obj) => obj.type === 'TRASH')
-            })
+
         case 'CHECK_MAIL':
             return Object.assign({}, state, {
                 allMails: state.allMails.concat().map((obj) => { 
@@ -51,6 +35,7 @@ const mailList = (state = initialState, action) => {
                     return obj
                 })
             })
+            
         case 'CHECK_ALL_MAILS':
             return Object.assign({}, state, {
                 allMails: state.allMails.concat().map((obj) => { 

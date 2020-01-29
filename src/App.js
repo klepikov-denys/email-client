@@ -1,85 +1,52 @@
 import React from 'react';
 import './App.css';
-import Mail from './mails/Mail'
 import Navi from './navigation/Navi'
 import ButtonBar from './buttonBar/ButtonBar'
 import {Route, Switch, BrowserRouter as Router, Link} from 'react-router-dom'
 import Compose from './compose/Compose'
-import Message from './message/Message.js'
+import Message from './message/Message.jsx'
 import { connect } from 'react-redux'
-import {filterMails} from './actions/filteringAction'
-
-
+import MailsList from './mails/MailsList'
 
 
 class App extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      btnState: Array(4).fill(true)
+      filterType: 'INBOX',
+      filteredMails: this.props.mails.concat().filter((obj) => obj.type === 'INBOX')
     }
 
     this.handleNaviClick = this.handleNaviClick.bind(this)
     this.baseState = this.state
   }  
 
-  
 
 
-  handleNaviClick(arg){
-    
-
-    switch (arg){
+  handleNaviClick(type){
+    switch (type){
       case 'INBOX':
-        this.setState({
-          btnState: this.baseState.btnState.map((bool, index) => index === 0 ? !bool : bool)})
-        this.props.filterMails('INBOX')
+        this.setState({ filterType: 'INBOX', 
+        filteredMails: this.props.mails.concat().filter((obj) => obj.type === 'INBOX')}) 
         break;
       case 'IMPORTANT':
-        this.setState({
-          btnState: this.baseState.btnState.map((bool, index) => index === 1 ? !bool : bool)})
-        this.props.filterMails('IMPORTANT')
+        this.setState({ filterType: 'IMPORTANT',
+        filteredMails: this.props.mails.concat().filter((obj) => obj.type === 'IMPORTANT')})
         break;
       case 'SENT':
-        this.setState({
-          btnState: this.baseState.btnState.map((bool, index) => index === 2 ? !bool : bool)})
-        this.props.filterMails('SENT')
+        this.setState({ filterType: 'SENT',
+        filteredMails: this.props.mails.concat().filter((obj) => obj.type === 'SENT')})
         break;
       case 'TRASH':
-        this.setState({
-          btnState: this.baseState.btnState.map((bool, index) => index === 3 ? !bool : bool)})
-        this.props.filterMails('TRASH') 
+        this.setState({ filterType: 'TRASH', 
+        filteredMails: this.props.mails.concat().filter((obj) => obj.type === 'TRASH')})
         break;
       default: return this.state
     }
   }
 
 
-  
-
   render(){
-    
-    console.log(this.props.mails)
-
-    let mails = this.props.mails.map((mail) =>{
-      let textPreview = mail.text.slice(0,42) + '...';
-      let id = mail.id
-      return(
-          <Mail 
-            className={'app-link'}
-            senderName = {mail.sender}
-            mailText = {textPreview} 
-            type = {mail.type} 
-            recipientName = {mail.recipient}
-            key = {id}  
-            id = {id}
-            checked = {mail.checked}
-          />
-      )
-    } 
-      
-    )
-
     return (
       <Router>
         <div className="App">
@@ -115,7 +82,10 @@ class App extends React.Component{
                   </div>
                   <hr></hr>
                   <div className='mainContentMails'>
-                    {mails}
+                    <MailsList
+                      filterType={this.state.filterType}
+                      filteredMails={this.state.filteredMails}
+                    />
                   </div>
 
                 </main>
@@ -133,18 +103,9 @@ class App extends React.Component{
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    filterMails: (prop) => {
-      dispatch(filterMails(prop));
-    }
-  }
-}
 
-const mapStateToProps = (state) => {
-  return{
+const mapStateToProps = (state) => ({
     mails: state.allMails
-  }
-}
+  })
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, )(App);

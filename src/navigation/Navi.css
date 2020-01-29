@@ -15,7 +15,7 @@
     cursor: pointer;
 }
 
-.active{
+.btnStyle:focus{
     box-shadow: 0 0 10px #4876e0;
     font-weight: bold;
 }

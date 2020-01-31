@@ -1,5 +1,3 @@
-export const deleteMails = () => {
-    return {
+export const deleteMails = () =>({
         type: 'DELETE_MAILS',
-    }
-}
+    })

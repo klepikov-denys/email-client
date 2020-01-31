@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addMail } from '../actions/mailAction'
 
 function Compose (){
-    const mailsCpsty = useSelector(state => state.allMails.length)
+    const mailsCpsty = useSelector(state => state.mailList.allMails.length)
 
     let wordCapacity = 600
 
@@ -15,18 +15,26 @@ function Compose (){
         subject: '',
     })
 
+    const [voidSpace, setvoidSpace] = useState(false)
+
     const dispatch = useDispatch()
-    
-    
+  
     const submitHandler = (event) => {
         event.preventDefault()
-        dispatch(addMail(state.recipient, state.text, mailsCpsty, state.subject))
-        setState({
-        wordCapacity: state.wordCapacity,
-        recipient: ' ',
-        text: ' ',
-        subject: ' ',
-    })
+        if(state.recipient && state.text && state.subject){
+            dispatch(addMail(state.recipient, state.text, mailsCpsty, state.subject))
+            setState({
+            wordCapacity: state.wordCapacity,
+            recipient: ' ',
+            text: ' ',
+            subject: ' ',
+            })
+            setvoidSpace(false)
+            return
+        }else{
+        setvoidSpace(true)
+        }
+        
     }
     
     const inputHandler = useCallback(
@@ -67,39 +75,29 @@ function Compose (){
         <form className='cmps-wrapper' onSubmit={submitHandler}>
             <label className='cmps-label'>
                 To:
-                <input 
-                    type='text' 
-                    name='email' 
-                    className='cmps-input' 
+                <input type='text' name='email' 
+                    className={(voidSpace && !state.recipient)?'cmps-input void-space':'cmps-input'} 
                     value={state.recipient}
                     onChange={inputHandler}
                 />
             </label>
             <label className='cmps-label'>
                 Subject:
-                <input 
-                    type='text' value={state.subject} 
-                    name='subject' 
-                    className='cmps-input' 
-                    onChange={inputHandler}
+                <input type='text' value={state.subject} name='subject' 
+                className={(voidSpace && !state.subject)?'cmps-input void-space':'cmps-input'} 
+                    onChange={inputHandler} 
                 />
             </label>
 
-            <textarea 
-                type='text' name='text'
-                maxLength={wordCapacity} 
-                value={state.text}
-                className='cmps-text'
-                onChange={inputHandler}
-            ></textarea>
-
-            <input 
-                type='submit' 
-                value='submit' 
-                className='cmps-submit'  
-            />
-
-            <p>{state.wordCapacity}</p>
+            <textarea type='text' name='text' maxLength={wordCapacity} value={state.text}
+                className={(voidSpace && !state.text)?'cmps-text void-space':'cmps-text'} 
+                onChange={inputHandler}>
+            </textarea>
+            <div>
+                <p className='word-capacity'>{state.wordCapacity}</p>
+                <input type='submit' value='Sent' className='cmps-submit' />
+            </div>
+            
         </form>
 
 

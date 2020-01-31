@@ -7,6 +7,8 @@ import Compose from './compose/Compose'
 import Message from './message/Message.jsx'
 import { connect } from 'react-redux'
 import MailsList from './mails/MailsList'
+import Modal from './modal/Modal.js'
+import Login from './login/Login'
 
 
 class App extends React.Component{
@@ -14,11 +16,13 @@ class App extends React.Component{
     super(props)
     this.state = {
       filterType: 'INBOX',
-      filteredMails: this.props.mails.concat().filter((obj) => obj.type === 'INBOX')
+      filteredMails: this.props.mails.concat().filter((obj) => obj.type === 'INBOX'),
+      modalIsOpened: false,
     }
-
+    this.closeModal = this.closeModal.bind(this)
+    this.showModal = this.showModal.bind(this)
     this.handleNaviClick = this.handleNaviClick.bind(this)
-    this.baseState = this.state
+    
   }  
 
 
@@ -44,6 +48,19 @@ class App extends React.Component{
       default: return this.state
     }
   }
+  
+  showModal(){
+    this.setState({
+      modalIsOpened: true 
+    })
+  }
+
+  closeModal(){
+    this.setState({
+      modalIsOpened: false
+    })
+  }
+
 
 
   render(){
@@ -51,48 +68,50 @@ class App extends React.Component{
       <Router>
         <div className="App">
           <header className="App-header">
-            <Link to='/'>
+            <Link to='/' className={this.props.email ? '' : 'disabled'}>
               <img className="App-logo" src="https://img.icons8.com/plasticine/100/000000/email.png" alt="Mail Logo"></img>
             </Link>
 
-            <p className='userEmail'>den@gmail.com</p>
+            <p className='header-userEmail' onClick={this.showModal}>{this.props.email}</p>
             
+            <Modal show= {this.state.modalIsOpened} handleClose={this.closeModal} />
           </header>
-
-          <div className='mainContentWrapper'>
-            <aside className='mainContentSidebar'>
-              <Link to='/'>
-                <Navi 
-                  handleClick = {this.handleNaviClick}
-                  btnState = {this.state.btnState}
-                />
-              </Link>
-            </aside>
-
+          <div>
+            <Switch>
+              <Route path='/login' component={Login} />
+            </Switch>
             <Switch>
               <Route path='/compose' component={Compose} />
               <Route path='/mail/:id' component={Message} />
-            
+
               <Route exact path ='/'>
-                
+                <div className='mainContentWrapper'>
+                  <aside className='mainContentSidebar'>
+                    <Link to='/'>
+                      <Navi 
+                        handleClick = {this.handleNaviClick}
+                        btnState = {this.state.btnState}
+                      />
+                    </Link>
+                  </aside>
+                  
+                  <main className='mainContent'>
+                    <div className='mainButtonsBar'>
+                      <ButtonBar filterType={this.state.filterType} />
+                    </div>
+                    <hr></hr>
+                    <div className='mainContentMails'>
+                      <MailsList
+                        filterType={this.state.filterType}
+                        filteredMails={this.state.filteredMails}
+                      />
+                    </div>
 
-                <main className='mainContent'>
-                  <div className='mainButtonsBar'>
-                    <ButtonBar filterType={this.state.filterType} />
-                  </div>
-                  <hr></hr>
-                  <div className='mainContentMails'>
-                    <MailsList
-                      filterType={this.state.filterType}
-                      filteredMails={this.state.filteredMails}
-                    />
-                  </div>
-
-                </main>
+                  </main>
+                </div> 
               </Route>
             </Switch>
-          </div> 
-
+          </div>
 
         </div>
         
@@ -105,7 +124,8 @@ class App extends React.Component{
 
 
 const mapStateToProps = (state) => ({
-    mails: state.allMails
+    mails: state.mailList.allMails,
+    email: state.profileReducer.userEmail
   })
 
 export default connect(mapStateToProps, )(App);

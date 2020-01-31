@@ -5,7 +5,7 @@ import './message.css'
 
 
 export default function Message({ match }){
-    const allMails = useSelector(state => state.allMails)
+    const allMails = useSelector(state => state.mailList.allMails)
     const mail = allMails[match.params.id]
     
     

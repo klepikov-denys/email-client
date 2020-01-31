@@ -1,4 +1,4 @@
-div .mailWrapper{
+.mailWrapper{
 height: 10%;
 border: 1px solid #a2a2a3;
 border-radius: 5px;
@@ -11,12 +11,13 @@ flex-direction: row;
 
 .mail-text{
     flex: 1;
-    text-align: center ;
+    text-align: left;
+    padding-left: 10px;
 }
 
 .mail-text-prev {
     flex: 2;
-    text-align: center ;  
+    text-align: left ;  
 }
 
 .mail-text-input{
@@ -40,4 +41,35 @@ flex-direction: row;
 .deleted{
     text-decoration: line-through;
     opacity: 0.5;
+}
+
+
+@media only screen and (max-width: 600px){
+
+    .mailWrapper{
+        font-size: 11px;
+        }  
+   
+}
+
+@media only screen and (max-width: 768px) and (min-width: 600px){
+
+    .mailWrapper{
+        font-size: 14px;
+        }  
+
+    .mail-text{
+        flex: 2;
+    }
+    
+    .mail-text-prev {
+        flex: 4;
+        text-align: left ;  
+    }
+    
+    .mail-text-input{
+        flex: 1;
+        padding-left: 15px;
+    }
+   
 }

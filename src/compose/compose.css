@@ -33,7 +33,6 @@
 
 .cmps-text{
     height: 47vh;
-    width: 62.2vw;
     padding: 5px;
     margin: 10px 0;
     outline: none;
@@ -45,6 +44,38 @@
 .cmps-submit{
     margin: 0;
     padding: 0;
+    border: solid 1px grey;
+    border-radius: 5px;
+    width: 20%;
+    float: right;
+    
+}
 
-    width: 63vw;
+.word-capacity{
+    float: left;
+    margin: 0;
+}
+
+.void-space{
+    box-shadow: 0 1px 18px rgba(212, 30, 30, 0.699);
+    border: none;
+    border-bottom: solid 1px rgba(212, 30, 30, 0.699);
+}
+
+
+@media only screen and (max-width: 600px){  
+    .cmps-submit{
+        width: 40%;
+        height: 30px;
+    }   
+}
+  
+@media only screen and (max-width: 768px) and (min-width: 600px){
+    .void-space{
+        box-shadow: 0 1px 10px rgba(212, 30, 30, 0.699);
+    }
+
+    .cmps-submit{
+        width: 30%;
+    }
 }

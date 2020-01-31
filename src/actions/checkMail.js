@@ -1,7 +1,4 @@
-export const checkMails = (id) =>{
-
-    return {
+export const checkMails = (id) =>({
         type: 'CHECK_MAIL', 
         id,
-    }
-}
+    })

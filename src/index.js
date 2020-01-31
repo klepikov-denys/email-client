@@ -5,11 +5,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker'
 import { BrowserRouter } from 'react-router-dom'
 import { createStore } from 'redux'
-import mailList from './reducers/mailReducer'
+import allReducers from './reducers/index.js'
 import { Provider } from 'react-redux'
 
 
-const store = createStore(mailList, 
+const store = createStore(allReducers, 
      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 ReactDOM.render(

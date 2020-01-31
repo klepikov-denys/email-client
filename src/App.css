@@ -10,10 +10,10 @@
   margin: 0 0 0 15px;
 }
 
-.userEmail{
+.header-userEmail{
   margin: 25px;
   float: right;
-  cursor:pointer; 
+  cursor: pointer; 
 }
 
 .userEmail:hover{
@@ -49,3 +49,32 @@
   
 }
 
+.disabled{
+  pointer-events: none;
+}
+
+@media only screen and (max-width: 600px){
+  .mainContentWrapper{
+    grid-template-columns: minmax(200px, 1fr);
+    grid-template-rows: min-content 70vh;
+  }
+
+  .mainContentMails{
+    margin: 0 10px;
+  }
+}
+
+@media only screen and (max-width: 768px) and (min-width: 600px){
+  .mainContentWrapper{
+    grid-template-columns: minmax(200px, 1fr);
+    grid-template-rows: min-content 70vh;
+  }
+
+  .mainContentSidebar{
+    padding: 0 20vw;
+  }
+
+  .mainContentMails{
+    margin: 0 20px;
+  }
+}

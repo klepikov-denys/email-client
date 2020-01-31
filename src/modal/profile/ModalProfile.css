@@ -1,0 +1,41 @@
+.modal-profile-wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-basis: 60px;
+    height: 70px;
+}
+
+.ico {
+    width: 80px;
+    height: 70px;
+}
+
+.modal-profile-text-wrapper{
+  margin-left: 20px;
+  width: auto;
+}
+
+
+
+@media only screen and (max-width: 600px){  
+  .modal-profile-wrapper{
+    flex-direction: column;
+    height: auto;
+}
+
+  .modal-profile-text-wrapper{
+      margin: 0;
+  }
+
+}
+  
+@media only screen and (max-width: 768px) and (min-width: 600px){
+  .modal-profile-wrapper{
+    flex-direction: column;
+    height: auto;
+}
+
+  .modal-profile-text-wrapper{
+      margin: 0;
+  }
+}

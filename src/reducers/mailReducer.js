@@ -14,7 +14,7 @@ const mailList = (state = initialState, action) => {
             allMails: [
                 ...state.allMails,  
                 {
-                sender: 'den@gmail.com',
+                sender: action.sender,
                 recipient: action.recipient,
                 subject: action.subject,
                 text: action.text,
@@ -50,6 +50,10 @@ const mailList = (state = initialState, action) => {
                     }
                     return obj
                 })
+            })
+            case 'LOGIN':
+            return Object.assign({}, state, {
+                allMails: []
             })
         default:
             return state;

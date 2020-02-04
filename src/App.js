@@ -66,17 +66,17 @@ class App extends React.Component{
   render(){
     return (
       <Router>
-        <div className="App">
-          <header className="App-header">
-            <Link to='/' className={this.props.email ? '' : 'disabled'}>
-              <img className="App-logo" src="https://img.icons8.com/plasticine/100/000000/email.png" alt="Mail Logo"></img>
+        <div className="app">
+          <header className="app-header">
+            <Link to='/' className={this.props.email ? '' : 'disabled-link-logo'}>
+              <img className="app-logo" src="https://img.icons8.com/plasticine/100/000000/email.png" alt="Mail Logo"></img>
             </Link>
 
-            <p className='header-userEmail' onClick={this.showModal}>{this.props.email}</p>
+            <p className='header-user-email' onClick={this.showModal}>{this.props.email}</p>
             
             <Modal show= {this.state.modalIsOpened} handleClose={this.closeModal} />
           </header>
-          <div>
+          <div className='main-content-wrapper'>
             <Switch>
               <Route path='/login' component={Login} />
             </Switch>
@@ -85,8 +85,8 @@ class App extends React.Component{
               <Route path='/mail/:id' component={Message} />
 
               <Route exact path ='/'>
-                <div className='mainContentWrapper'>
-                  <aside className='mainContentSidebar'>
+                <div className='main-content'>
+                  <aside className='main-content-sidebar'>
                     <Link to='/'>
                       <Navi 
                         handleClick = {this.handleNaviClick}
@@ -95,12 +95,12 @@ class App extends React.Component{
                     </Link>
                   </aside>
                   
-                  <main className='mainContent'>
-                    <div className='mainButtonsBar'>
+                  <main className='main-content-main'>
+                    <div className='main-button-bar'>
                       <ButtonBar filterType={this.state.filterType} />
                     </div>
                     <hr></hr>
-                    <div className='mainContentMails'>
+                    <div className='content-main-mails'>
                       <MailsList
                         filterType={this.state.filterType}
                         filteredMails={this.state.filteredMails}

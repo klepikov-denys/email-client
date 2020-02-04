@@ -11,6 +11,11 @@ const profileReducer = (state = initialState, action) => {
                 userName: '',
                 userEmail: ''
             })
+        case 'LOGIN':
+            return Object.assign({}, state, {
+                userName: action.user.name,
+                userEmail: action.user.email
+            })
         default: return state
     }
 }

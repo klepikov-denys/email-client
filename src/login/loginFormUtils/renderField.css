@@ -1,0 +1,12 @@
+
+.login-error-message{
+    color: red;
+    font-weight: bold;
+    display: block;
+    margin: 5px 0 10px 0;
+}
+
+.login-warning-message{
+    color: rgba(218, 65, 65, 0.829);
+    margin-left: 10px;
+}

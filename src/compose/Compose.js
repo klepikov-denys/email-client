@@ -5,7 +5,7 @@ import { addMail } from '../actions/mailAction'
 
 function Compose (){
     const mailsCpsty = useSelector(state => state.mailList.allMails.length)
-
+    const sender = useSelector(state => state.profileReducer.userEmail)
     let wordCapacity = 600
 
     const [state, setState] = useState({
@@ -22,7 +22,7 @@ function Compose (){
     const submitHandler = (event) => {
         event.preventDefault()
         if(state.recipient && state.text && state.subject){
-            dispatch(addMail(state.recipient, state.text, mailsCpsty, state.subject))
+            dispatch(addMail(state.recipient, state.text, mailsCpsty, state.subject, sender))
             setState({
             wordCapacity: state.wordCapacity,
             recipient: ' ',

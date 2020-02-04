@@ -1,16 +1,16 @@
-.App-header{
+.app-header{
   background-color: rgb(184, 184, 184);
   height: 80px;
   border-radius: 0 0 8px 8px;
 }
 
-.App-logo{
+.app-logo{
   height: 80px;
   cursor: pointer;
   margin: 0 0 0 15px;
 }
 
-.header-userEmail{
+.header-user-email{
   margin: 25px;
   float: right;
   cursor: pointer; 
@@ -20,61 +20,66 @@
   color: rgb(19, 41, 136);
 }
 
-.mainContentWrapper{
+.main-content-wrapper{
+  height: 93vh;
+  
+}
+
+.main-content{
   display: grid;
   grid-template-columns: minmax(200px, 1fr) minmax(300px, 2fr);
   background-color: rgb(223, 227, 247);
-  grid-template-rows: 105vh;
+  grid-template-rows: 90vh;
   
 }
 
-.mainContentSidebar{
+.main-content-sidebar{
   background-color: rgb(223, 227, 247);
   
 }
 
-.mainContent{
+.main-content-main{
   background-color: rgb(223, 227, 247);
   
 }
 
-.mainButtonsBar{
+.content-main-button-bar{
   height: 40px;
   
 }
 
-.mainContentMails{
+.content-main-mails{
   background-color: #ffffff;
   margin-right: 10px;
   
 }
 
-.disabled{
+.disabled-link-logo{
   pointer-events: none;
 }
 
 @media only screen and (max-width: 600px){
-  .mainContentWrapper{
+  .main-content{
     grid-template-columns: minmax(200px, 1fr);
     grid-template-rows: min-content 70vh;
   }
 
-  .mainContentMails{
+  .content-main-mails{
     margin: 0 10px;
   }
 }
 
 @media only screen and (max-width: 768px) and (min-width: 600px){
-  .mainContentWrapper{
+  .main-content{
     grid-template-columns: minmax(200px, 1fr);
     grid-template-rows: min-content 70vh;
   }
 
-  .mainContentSidebar{
+  .main-content-sidebar{
     padding: 0 20vw;
   }
 
-  .mainContentMails{
+  .content-main-mails{
     margin: 0 20px;
   }
 }

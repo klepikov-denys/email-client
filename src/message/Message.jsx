@@ -13,12 +13,12 @@ export default function Message({ match }){
         <div className={'wrapper'}>
             <p className ={'textFields'}>
                 <strong>To: </strong>
-                {mail.recipient === 'den@gmail.com' ? 'You' : mail.recipient } 
+                { mail.recipient } 
             </p>
             
             <p className ={'textFields'}>
                 <strong>From: </strong>
-                {mail.sender === 'den@gmail.com' ? 'You' : mail.sender } 
+                { mail.sender } 
             </p>
 
             <p className ={'textFields lastField'}>

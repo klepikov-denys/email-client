@@ -1,0 +1,54 @@
+.cmps-form-input{
+    border: none;
+    border-bottom: 1px solid grey;
+    background-color: rgb(223, 227, 247);
+    font-size: 16px;
+    margin: 10px 0;
+    width:  80%;
+    
+}
+.cmps-form-label{
+    font-weight: bold;
+    display: block;
+}
+.cmps-form-text{
+    height: 47vh;
+    padding: 5px;
+    margin: 10px 0;
+    outline: none;
+    font-size: 16px;
+    width: 90%;
+    
+    resize: none;
+}
+
+.cmps-error-message{
+    color: rgba(218, 65, 65, 0.829);
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.cmps-warning-message{
+    color: rgba(218, 65, 65, 0.829);
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+
+
+@media only screen and (max-width: 600px){  
+    .cmps-submit{
+        width: 40%;
+        height: 30px;
+    }   
+}
+  
+@media only screen and (max-width: 768px) and (min-width: 600px){
+    .void-space{
+        box-shadow: 0 1px 10px rgba(212, 30, 30, 0.699);
+    }
+
+    .cmps-submit{
+        width: 30%;
+    }
+}

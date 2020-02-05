@@ -19,9 +19,17 @@
     padding: 10px;
     padding-bottom: 20px;
 
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.login-displayNone{
+    display: none;
+}
 
+.main-login-form-text{
+    width: 345px;
     display: flex;
     flex-direction: column;
     align-items: center;

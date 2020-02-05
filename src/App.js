@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 import MailsList from './mails/MailsList'
 import Modal from './modal/Modal.js'
 import Login from './login/Login'
+import { withRouter } from 'react-router-dom'
 
 
 class App extends React.Component{
@@ -128,4 +129,4 @@ const mapStateToProps = (state) => ({
     email: state.profileReducer.userEmail
   })
 
-export default connect(mapStateToProps, )(App);
+export default withRouter(connect(mapStateToProps)(App));

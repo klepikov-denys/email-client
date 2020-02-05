@@ -1,9 +1,7 @@
 
-export const addMail = (recipient, text, id, subject, sender) =>({
+export const addMail = (newMail, id, sender) =>({
         type:'SENDING',
-        recipient,
-        text,
+        newMail,
         id,
-        subject,
         sender,
     })

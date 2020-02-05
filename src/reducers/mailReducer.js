@@ -15,9 +15,9 @@ const mailList = (state = initialState, action) => {
                 ...state.allMails,  
                 {
                 sender: action.sender,
-                recipient: action.recipient,
-                subject: action.subject,
-                text: action.text,
+                recipient: action.newMail.email,
+                subject: action.newMail.subject,
+                text: action.newMail.text,
                 type: 'SENT',
                 id : action.id,
                 checked: false

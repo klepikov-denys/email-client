@@ -1,12 +1,14 @@
 import React from 'react' 
 import { useSelector } from 'react-redux'
+import { useParams } from 'react-router'
 import './message.css'
 
 
 
-export default function Message({ match }){
+export default function Message(){
     const allMails = useSelector(state => state.mailList.allMails)
-    const mail = allMails[match.params.id]
+    let { id } = useParams();
+    const mail = allMails[id]
     
     
     return(

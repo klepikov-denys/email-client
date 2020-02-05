@@ -1,0 +1,30 @@
+.cmps-wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    background-color: rgb(223, 227, 247);
+    
+}
+
+.cmps-submit{
+    margin: 0;
+    padding: 0;
+    border: solid 1px grey;
+    border-radius: 5px;
+    width: 20%;
+    align-self: flex-end;
+    margin-right: 9%;
+}
+
+@media only screen and (max-width: 600px){  
+    .cmps-submit{
+        width: 40%;
+        height: 30px;
+    }   
+}
+  
+@media only screen and (max-width: 768px) and (min-width: 600px){
+    .cmps-submit{
+        width: 30%;
+    }
+}

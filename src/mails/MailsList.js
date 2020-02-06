@@ -5,7 +5,8 @@ import Mail from './Mail'
 
 
 function MailsList (props) {
-     let filteredMails = props.filteredMails.map((mail) => {
+    const filteredMails = props.mails.concat().filter((obj) => obj.type === props.filterType)
+     let filteredPreviews = filteredMails.map((mail) => {
         let textPreview = mail.text.slice(0,42) + '...';
         let id = mail.id 
         return(
@@ -22,7 +23,7 @@ function MailsList (props) {
 
     return(
         <div>
-        {filteredMails}
+        {filteredPreviews}
        </div>
     )
 

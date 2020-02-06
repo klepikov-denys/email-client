@@ -10,3 +10,12 @@
     color: rgba(218, 65, 65, 0.829);
     margin-left: 10px;
 }
+
+.login-input{
+    all: unset;
+    height: 20px;
+    margin: 7px 0;
+    border-bottom: solid 1px black;
+    outline: none;
+    background-color: rgb(216, 216, 216);
+}

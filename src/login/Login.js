@@ -3,8 +3,7 @@ import LoginForm from './LoginForm'
 import {useDispatch} from 'react-redux'
 import {loginAction} from '../actions/login'
 import './login.css'
-import { Loader } from '../loader/Loader'
-import classNames from 'classnames'
+import ModalLoader from '../loader/modalLoader/ModalLoader'
 
 function Login(props){
     const dispatch = useDispatch()
@@ -15,17 +14,15 @@ function Login(props){
     const handleLoaderState = () => {
         setLoaderState(!loaderState)
     }
-    const clName = classNames({
-        'login-displayNone': loaderState
-    })
+   
 
     return(
         <div className='main-login-form-wrapper'>
             <div className='main-login-form'>
                 <div className='main-login-form-text'>
-                    <h1 className={clName}>Welcom to Soap@mail!</h1>
-                    <h2 className={clName}>Please sign in to go further</h2>
-                    {loaderState && <Loader className='main-login-loader' />}
+                    <h1 >Welcom to Soap@mail!</h1>
+                    <h2 >Please sign in to go further</h2>
+                    <ModalLoader show={loaderState} />
                 </div>
                 <LoginForm 
                     onSubmit={submit} 

@@ -9,7 +9,7 @@ export const renderField = ({
     <div>
         <label>{label}</label>
         <div>
-            <input {...input} placeholder={'Write here'} type={type} />
+            <input {...input} className='login-input' placeholder={'Write here'} type={type} />
             {touched &&
             ((error && <span className='login-error-message'>{error}</span>) ||
             (warning && <span className='login-warning-message'>{warning}</span>))}

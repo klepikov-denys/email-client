@@ -21,8 +21,7 @@
 }
 
 .main-content-wrapper{
-  height: 93vh;
-  
+  height: auto;
 }
 
 .main-content{
@@ -30,7 +29,6 @@
   grid-template-columns: minmax(200px, 1fr) minmax(300px, 2fr);
   background-color: rgb(223, 227, 247);
   grid-template-rows: 90vh;
-  
 }
 
 .main-content-sidebar{

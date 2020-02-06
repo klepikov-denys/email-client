@@ -2,7 +2,7 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { renderComposeInput, renderComposeMailText } from './composeFormUtils/renderComposeFields'
 import './composeForm.css'
-import { required } from './composeFormUtils/composeFormValidators'
+import { required, emailValid } from './composeFormUtils/composeFormValidators'
 function ComposeMailForm(props){
     const {handleSubmit} = props
 
@@ -13,7 +13,7 @@ function ComposeMailForm(props){
                 type='text'
                 name='email'
                 label='To:'
-                validate={required}
+                validate={[required, emailValid]}
                 component={renderComposeInput}
                 placeholder='Email'
             />

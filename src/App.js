@@ -17,34 +17,25 @@ class App extends React.Component{
     super(props)
     this.state = {
       filterType: 'INBOX',
-      filteredMails: this.props.mails.concat().filter((obj) => obj.type === 'INBOX'),
       modalIsOpened: false,
     }
     this.closeModal = this.closeModal.bind(this)
     this.showModal = this.showModal.bind(this)
     this.handleNaviClick = this.handleNaviClick.bind(this)
-    
   }  
-
-
-
   handleNaviClick(type){
     switch (type){
       case 'INBOX':
-        this.setState({ filterType: 'INBOX', 
-        filteredMails: this.props.mails.concat().filter((obj) => obj.type === 'INBOX')}) 
+        this.setState({ filterType: 'INBOX'})
         break;
       case 'IMPORTANT':
-        this.setState({ filterType: 'IMPORTANT',
-        filteredMails: this.props.mails.concat().filter((obj) => obj.type === 'IMPORTANT')})
+        this.setState({ filterType: 'IMPORTANT'})
         break;
       case 'SENT':
-        this.setState({ filterType: 'SENT',
-        filteredMails: this.props.mails.concat().filter((obj) => obj.type === 'SENT')})
+        this.setState({ filterType: 'SENT'})
         break;
       case 'TRASH':
-        this.setState({ filterType: 'TRASH', 
-        filteredMails: this.props.mails.concat().filter((obj) => obj.type === 'TRASH')})
+        this.setState({ filterType: 'TRASH'})
         break;
       default: return this.state
     }
@@ -61,8 +52,6 @@ class App extends React.Component{
       modalIsOpened: false
     })
   }
-
-
 
   render(){
     return (
@@ -104,7 +93,7 @@ class App extends React.Component{
                     <div className='content-main-mails'>
                       <MailsList
                         filterType={this.state.filterType}
-                        filteredMails={this.state.filteredMails}
+                        mails={this.props.mails}
                       />
                     </div>
 

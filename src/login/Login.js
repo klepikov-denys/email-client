@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useCallback} from 'react'
 import LoginForm from './LoginForm'
 import {useDispatch} from 'react-redux'
 import {loginAction} from '../actions/login'
@@ -7,13 +7,13 @@ import ModalLoader from '../loader/modalLoader/ModalLoader'
 
 function Login(props){
     const dispatch = useDispatch()
-    const submit = (user) =>{
+    const submit = useCallback((user) =>{
         dispatch(loginAction(user))
-    }
+    }, [dispatch])
     const [loaderState, setLoaderState] = useState(false)
-    const handleLoaderState = () => {
+    const handleLoaderState = useCallback(() => {
         setLoaderState(!loaderState)
-    }
+    },[loaderState])
    
 
     return(

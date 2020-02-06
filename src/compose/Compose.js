@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addMail } from '../actions/mailAction'
 import ComposeMailForm from './composeForm/ComposeForm.jsx'
@@ -11,21 +11,22 @@ function Compose (){
     const [loaderState, setLoaderState] = useState(false)
     const dispatch = useDispatch()
     const history = useHistory()
-    const handleStateOnSubmit = () =>{
-        setLoaderState(!loaderState)
-        history.push('/')
-    }
-    const submit = (newMail) =>{
-        dispatch(addMail(newMail, mailsCpsty, sender))
-        setLoaderState(!loaderState)
-        setTimeout(handleStateOnSubmit, 4000)
-    }
+
+    const handleFormSubmit = useCallback(
+        (newMail) => {
+            dispatch(addMail(newMail, mailsCpsty, sender))
+            setLoaderState(!loaderState)
+            setTimeout(()=> {setLoaderState(!loaderState) 
+                history.push('/')}, 4000)
+        },
+        [dispatch, loaderState, mailsCpsty, sender, history],
+    )
     
     return(
         <div>
             <ModalLoader show={loaderState} />
             <ComposeMailForm 
-                onSubmit={submit}
+                onSubmit={handleFormSubmit}
             />
         </div>
     )

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import classNames from 'classnames'
 import './modal.css'
 import ModalProfile from './profile/ModalProfile'
@@ -10,18 +10,17 @@ import PropTypes from 'prop-types'
 
 
 function Modal({ show, handleClose }){
+    const dispatch = useDispatch()
+    const handleProfileChange = useCallback(() => {
+        handleClose()
+        dispatch(changeProfile())
+    },[dispatch, handleClose])
+    
     const style = classNames({
         modal: true,
         'display': show,
         'displayNone': !show
     })
-
-    const dispatch = useDispatch()
-
-    const handleProfileChange = () => {
-        handleClose()
-        dispatch(changeProfile())
-    }
 
     return(
         <div className={style}>

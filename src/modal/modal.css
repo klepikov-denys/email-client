@@ -22,7 +22,6 @@
     transition: all 2s;
   }
   
-  
   .display {
     display: block;
     
@@ -43,6 +42,7 @@
       float: right;
       border-radius: 50%;
       font-size: 8px;
+      padding: 0;
   }
 
   .changeProfile{

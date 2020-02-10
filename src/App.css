@@ -21,7 +21,8 @@
 }
 
 .main-content-wrapper{
-  height: auto;
+  height: 88vh;
+  background-color: rgb(223, 227, 247);
 }
 
 .main-content{

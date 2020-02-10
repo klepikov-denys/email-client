@@ -5,7 +5,7 @@ import { renderField } from './loginFormUtils/renderField.jsx'
 import { useHistory } from 'react-router'
 
 function LoginForm(props){    
-    const {handleSubmit, submitting, handleLoaderState} = props
+    const {handleSubmit, handleLoaderState, pristine, invalid } = props
     let history = useHistory()
     const handleButtonClick = ()=>{
         handleLoaderState()
@@ -34,7 +34,7 @@ function LoginForm(props){
                 warn={alphaNumeric}
             />
             
-            <button type='submit' disabled={submitting}
+            <button type='submit' disabled={ pristine || invalid }
                 onClick={handleButtonClick}
             >submit</button>
          </form>

@@ -4,6 +4,7 @@ import { oldMails } from '../mails/oldMails'
 
 let initialState = {
     allMails: oldMails,
+    allMailsChecked: false,
 }
 
 
@@ -35,11 +36,14 @@ const mailList = (state = initialState, action) => {
         case 'CHECK_ALL_MAILS':
             return Object.assign({}, state, {
                 allMails: state.allMails.concat().map((obj) => { 
-                    if (action.filterType === obj.type){
-                        obj.checked = !obj.checked
+                    if (action.filterType === obj.type && !state.allMailsChecked){
+                        obj.checked = true
+                    } else{
+                        obj.checked = false
                     }
                     return obj
-                })
+                }),
+                allMailsChecked: !state.allMailsChecked,
             })
         case 'DELETE_MAILS':
             return Object.assign({}, state, {

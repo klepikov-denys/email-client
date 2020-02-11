@@ -1,5 +1,5 @@
 .mailWrapper{
-height: 10%;
+height: 70px;
 border: 1px solid #a2a2a3;
 border-radius: 5px;
 margin-bottom: 1px;
@@ -9,15 +9,18 @@ align-items:center;
 flex-direction: row;
 }  
 
+
 .mail-text{
     flex: 1;
     text-align: left;
     padding-left: 10px;
+    margin: 0;
 }
 
 .mail-text-prev {
     flex: 2;
     text-align: left ;  
+    margin: 0;
 }
 
 .mail-text-input{

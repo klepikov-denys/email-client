@@ -20,7 +20,7 @@ function Login(props){
         <div className='main-login-form-wrapper'>
             <div className='main-login-form'>
                 <div className='main-login-form-text'>
-                    <h1 >Welcom to Soap@mail!</h1>
+                    <h1 >Welcome to Soap@mail!</h1>
                     <h2 >Please sign in to go further</h2>
                     <ModalLoader show={loaderState} />
                 </div>

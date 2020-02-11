@@ -7,9 +7,9 @@ function ComposeMailForm(props){
     const {handleSubmit} = props
 
     return(
-        <form className='cmps-wrapper' onSubmit={handleSubmit}>
+        <form className='compose-wrapper' onSubmit={handleSubmit}>
             <Field 
-                className='cmps-form-input'
+                className='compose-form-input'
                 type='text'
                 name='email'
                 label='To:'
@@ -18,7 +18,7 @@ function ComposeMailForm(props){
                 placeholder='Email'
             />
             <Field 
-                className='cmps-form-input'
+                className='compose-form-input'
                 type='text'
                 name='subject'
                 label='Subject:'
@@ -31,7 +31,7 @@ function ComposeMailForm(props){
                 name='text'
                 component={renderComposeMailText} 
             />
-            <button className='cmps-submit'>Sent</button>
+            <button className='compose-submit'>Sent</button>
         </form>
     )
 }

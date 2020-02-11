@@ -1,29 +1,34 @@
 import React from 'react'
 import './Navi.css'
+import Button from 'react-bootstrap/Button'
 
 function Navi({handleClick}){
-
+    
     return(
-        <div className = {'naviBlockStyle'}>
-            <button 
+        <div className = 'naviBlockStyle'>
+            <Button 
+                variant='outline-primary' 
                 onClick = {handleClick.bind(this, 'INBOX')}
-                className = 'btnStyle'  
-            >Inbox</button>
+                className='naviBtnStyle'
+            >Inbox</Button>
 
-            <button 
+            <Button 
+                variant='outline-primary'
                 onClick = {handleClick.bind(this, 'IMPORTANT')}
-                className = 'btnStyle'
-            >Important</button>
+                className='naviBtnStyle'
+            >Important</Button>
 
-            <button 
-                onClick = {handleClick.bind(this, 'SENT')}                
-                className = 'btnStyle'
-            >Sent</button>
+            <Button 
+                variant='outline-primary'
+                onClick = {handleClick.bind(this, 'SENT')}      
+                className='naviBtnStyle'          
+            >Sent</Button>
 
-            <button 
+            <Button 
+                variant='outline-primary'
                 onClick = {handleClick.bind(this, 'TRASH')}
-                className = 'btnStyle'
-            >Trash</button>
+                className='naviBtnStyle'
+            >Trash</Button>
         </div>
     )
 }

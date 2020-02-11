@@ -4,7 +4,7 @@ import { oldMails } from '../mails/oldMails'
 
 let initialState = {
     allMails: oldMails,
-    allMailsChecked: false,
+    allMailsChecked:false,
 }
 
 

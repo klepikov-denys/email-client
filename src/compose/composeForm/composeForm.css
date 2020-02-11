@@ -1,4 +1,4 @@
-.cmps-wrapper{
+.compose-wrapper{
     display: flex;
     flex-direction: column;
     padding: 15px;
@@ -6,7 +6,7 @@
     
 }
 
-.cmps-submit{
+.compose-submit{
     margin: 0;
     padding: 0;
     border: solid 1px grey;
@@ -17,14 +17,14 @@
 }
 
 @media only screen and (max-width: 600px){  
-    .cmps-submit{
+    .compose-submit{
         width: 40%;
         height: 30px;
     }   
 }
   
 @media only screen and (max-width: 768px) and (min-width: 600px){
-    .cmps-submit{
+    .compose-submit{
         width: 30%;
     }
 }

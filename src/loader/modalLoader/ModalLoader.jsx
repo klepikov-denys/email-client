@@ -3,10 +3,10 @@ import {Loader} from '../Loader'
 import classNames from 'classnames'
 import './ModalLoader.css'
 
-function ModalLoader (props) {
+function ModalLoader ({show}) {
     const style = classNames({
         'modal-loader-bg': true,
-        'display': props.show,
+        'display-modal-loader': show,
     })
 
     return(

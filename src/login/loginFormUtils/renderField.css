@@ -13,9 +13,14 @@
 
 .login-input{
     all: unset;
-    height: 20px;
+    height: 30px;
     margin: 7px 0;
+    width: 100%;
     border-bottom: solid 1px black;
     outline: none;
     background-color: rgb(216, 216, 216);
+}
+
+.login-form-wrap{
+    width: 80%;
 }

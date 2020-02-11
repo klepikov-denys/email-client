@@ -16,7 +16,7 @@ function LoginForm(props){
 
    
     return(
-        <form onSubmit={handleSubmit}>
+        <form className='login-form-wrap' onSubmit={handleSubmit}>
             <Field 
                 name='email' 
                 component={renderField} 

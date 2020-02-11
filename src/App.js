@@ -7,7 +7,7 @@ import Compose from './compose/Compose'
 import Message from './message/Message.jsx'
 import { connect } from 'react-redux'
 import MailsList from './mails/MailsList'
-import Modal from './modal/Modal.js'
+import ModalWindow from './modal/Modal.js'
 import Login from './login/Login'
 import { withRouter } from 'react-router-dom'
 
@@ -64,7 +64,7 @@ class App extends React.Component{
 
             <p className='header-user-email' onClick={this.showModal}>{this.props.email}</p>
             
-            <Modal show= {this.state.modalIsOpened} handleClose={this.closeModal} />
+            <ModalWindow show= {this.state.modalIsOpened} onHide={this.closeModal} />
           </header>
           <div className='main-content-wrapper'>
             <Switch>
@@ -77,12 +77,10 @@ class App extends React.Component{
               <Route exact path ='/'>
                 <div className='main-content'>
                   <aside className='main-content-sidebar'>
-                    <Link to='/'>
                       <Navi 
                         handleClick = {this.handleNaviClick}
                         btnState = {this.state.btnState}
                       />
-                    </Link>
                   </aside>
                   
                   <main className='main-content-main'>

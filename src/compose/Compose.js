@@ -6,7 +6,7 @@ import ModalLoader from '../loader/modalLoader/ModalLoader'
 import { useHistory } from 'react-router-dom'
 
 function Compose (){
-    const mailsCpsty = useSelector(state => state.mailList.allMails.length)
+    const mailsCapacity = useSelector(state => state.mailList.allMails.length)
     const sender = useSelector(state => state.profileReducer.userEmail)
     const [loaderState, setLoaderState] = useState(false)
     const dispatch = useDispatch()
@@ -14,13 +14,14 @@ function Compose (){
 
     const handleFormSubmit = useCallback(
         (newMail) => {
-            dispatch(addMail(newMail, mailsCpsty, sender))
+            dispatch(addMail(newMail, mailsCapacity, sender))
             setLoaderState(!loaderState)
             setTimeout(()=> {setLoaderState(!loaderState) 
                 history.push('/')}, 4000)
         },
-        [dispatch, loaderState, mailsCpsty, sender, history],
+        [dispatch, loaderState, mailsCapacity, sender, history],
     )
+    
     
     return(
         <div>

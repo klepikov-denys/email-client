@@ -3,19 +3,9 @@
     flex-direction: column;
     margin: 15px;
 }
-.btnStyle{
-    margin:2px 0;
+
+.naviBtnStyle{
+    margin-top: 3px;
+    height: 35px;
     font-size: 15px;
-    border: 1px solid #4876e0;
-    background-color: #fff;
-}
-
-.btnStyle:hover{
-    background-color: #becce9;
-    cursor: pointer;
-}
-
-.btnStyle:focus{
-    box-shadow: 0 0 10px #4876e0;
-    font-weight: bold;
 }

@@ -10,6 +10,7 @@ import MailsList from './mails/MailsList'
 import ModalWindow from './modal/Modal.js'
 import Login from './login/Login'
 import { withRouter } from 'react-router-dom'
+import { refreshMails } from './thunkCreators/refreshMails'
 
 
 class App extends React.Component{
@@ -23,6 +24,10 @@ class App extends React.Component{
     this.showModal = this.showModal.bind(this)
     this.handleNaviClick = this.handleNaviClick.bind(this)
   }  
+
+  componentDidMount(){
+    this.props.refreshMailsList()
+  }
   handleNaviClick(type){
     switch (type){
       case 'INBOX':
@@ -40,6 +45,7 @@ class App extends React.Component{
       default: return this.state
     }
   }
+
   
   showModal(){
     this.setState({
@@ -115,5 +121,8 @@ const mapStateToProps = (state) => ({
     mails: state.mailList.allMails,
     email: state.profileReducer.userEmail
   })
+const mapDispatchToProps = (dispatch) => ({
+  refreshMailsList: () => dispatch(refreshMails())
+})
 
-export default withRouter(connect(mapStateToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

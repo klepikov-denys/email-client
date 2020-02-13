@@ -1,10 +1,8 @@
-import { oldMails } from '../mails/oldMails'
-
-
 
 let initialState = {
-    allMails: oldMails,
+    allMails: [],
     allMailsChecked:false,
+    loaderIsActive:false,
 }
 
 
@@ -58,6 +56,14 @@ const mailList = (state = initialState, action) => {
             case 'LOGIN':
             return Object.assign({}, state, {
                 allMails: []
+            })
+        case 'CHANGE_LOADER_STATUS':
+            return Object.assign({}, state, {
+                loaderIsActive: !state.loaderIsActive
+            })
+        case 'REFRESH_MAILS':
+            return Object.assign({}, state, {
+                allMails: action.mails
             })
         default:
             return state;

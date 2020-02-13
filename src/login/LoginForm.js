@@ -2,17 +2,11 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { emailVal, required, alphaNumeric } from './loginFormUtils/formValidators'
 import { renderField } from './loginFormUtils/renderField.jsx'
-import { useHistory } from 'react-router'
+
 
 function LoginForm(props){    
-    const {handleSubmit, handleLoaderState, pristine, invalid } = props
-    let history = useHistory()
-    const handleButtonClick = ()=>{
-        handleLoaderState()
-        setTimeout(()=> {history.push('/')
-        handleLoaderState()    
-        }, 2000)
-    }
+    const {handleSubmit, pristine, invalid } = props
+    
 
    
     return(
@@ -35,7 +29,6 @@ function LoginForm(props){
             />
             
             <button type='submit' disabled={ pristine || invalid }
-                onClick={handleButtonClick}
             >submit</button>
          </form>
     )

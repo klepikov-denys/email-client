@@ -11,7 +11,7 @@ export const oldMails = [
   {"sender":"George Cowey",
   "recipient":"den@gmail.com",
   "subject":"My Party",
-  "text":"Hello Deni! I'm writing you just to make sure that you remember about my Bday.",
+  "text":"Hello Denis! I'm writing you just to make sure that you remember about my Bday.",
   "type":"IMPORTANT",
   "id": 1,
   "checked":false

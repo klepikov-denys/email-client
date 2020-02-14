@@ -2,7 +2,6 @@
 let initialState = {
     allMails: [],
     allMailsChecked:false,
-    loaderIsActive:false,
 }
 
 
@@ -57,13 +56,13 @@ const mailList = (state = initialState, action) => {
             return Object.assign({}, state, {
                 allMails: []
             })
-        case 'CHANGE_LOADER_STATUS':
-            return Object.assign({}, state, {
-                loaderIsActive: !state.loaderIsActive
-            })
         case 'REFRESH_MAILS':
             return Object.assign({}, state, {
                 allMails: action.mails
+            })
+        case 'CHANGE_CHECKED_STATE':
+            return Object.assign({}, state,{
+                allMailsChecked: false,  
             })
         default:
             return state;

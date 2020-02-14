@@ -1,3 +1,3 @@
 export const changeLoaderStatus = () =>({
-    type: 'CHANGE_LOADER_STATUS'
+    type: 'CHANGE_LOADER_STATE'
 })

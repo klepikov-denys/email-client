@@ -15,6 +15,7 @@ function ButtonBar ({filterType}){
             <Button 
                 size='sm'
                 variant="outline-secondary"
+                disabled={filterType==='TRASH'}
                 className={'button check'}
                 onClick = {() => dispatch(checkAllMails(filterType))}>&#x2714;
             </Button>

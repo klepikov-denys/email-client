@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom'
 
 function Login(props){
     const dispatch = useDispatch()
-    const loaderStatus = useSelector(state => state.mailList.loaderIsActive)
+    const loaderStatus = useSelector(state => state.loaders.loaderIsActive)
     const history = useHistory()
     const submit = (user) => {
         dispatch(login(user, history))

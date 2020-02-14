@@ -6,7 +6,7 @@ import { sendMail } from '../thunkCreators/sendMailThunk'
 import { useHistory } from 'react-router-dom'
 
 function Compose (){
-    const [mailsCapacity, loaderState] = useSelector(state => [state.mailList.allMails.length, state.mailList.loaderIsActive])
+    const [mailsCapacity, loaderState] = useSelector(state => [state.mailList.allMails.length, state.loaders.loaderIsActive])
     const sender = useSelector(state => state.profileReducer.userEmail)
     const dispatch = useDispatch()
     const history = useHistory()

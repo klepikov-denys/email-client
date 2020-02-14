@@ -32,15 +32,19 @@ class App extends React.Component{
     switch (type){
       case 'INBOX':
         this.setState({ filterType: 'INBOX'})
+        this.props.changeCheckedState()
         break;
       case 'IMPORTANT':
         this.setState({ filterType: 'IMPORTANT'})
+        this.props.changeCheckedState()
         break;
       case 'SENT':
         this.setState({ filterType: 'SENT'})
+        this.props.changeCheckedState()
         break;
       case 'TRASH':
         this.setState({ filterType: 'TRASH'})
+        this.props.changeCheckedState()
         break;
       default: return this.state
     }
@@ -122,7 +126,8 @@ const mapStateToProps = (state) => ({
     email: state.profileReducer.userEmail
   })
 const mapDispatchToProps = (dispatch) => ({
-  refreshMailsList: () => dispatch(refreshMails())
+  refreshMailsList: () => dispatch(refreshMails()),
+  changeCheckedState: () => dispatch({type:'CHANGE_CHECKED_STATE'})
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

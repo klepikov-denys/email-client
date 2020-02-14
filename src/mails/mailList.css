@@ -1,0 +1,10 @@
+.mail-list-wrapper{
+    background-color: rgb(223, 227, 247);
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    
+}
+.mail-list-mails-wrapper{
+    width: 100%;
+}

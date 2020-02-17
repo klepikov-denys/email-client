@@ -7,15 +7,15 @@ const initialState = {
 const profileReducer = (state = initialState, action) => {
     switch (action.type){
         case 'CHANGE_PROFILE':
-            return Object.assign({}, state, {
+            return { ...state,
                 userName: '',
                 userEmail: ''
-            })
+            }
         case 'LOGIN':
-            return Object.assign({}, state, {
+            return { ...state,
                 userName: action.user.name,
                 userEmail: action.user.email
-            })
+            }
         default: return state
     }
 }

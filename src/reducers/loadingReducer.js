@@ -7,13 +7,13 @@ const initialState={
 const loaders = (state=initialState, action) => {
     switch(action.type){
         case 'CHANGE_LOADER_STATE':
-            return Object.assign({}, state, {
+            return { ...state,
                 loaderIsActive: !state.loaderIsActive
-            })
+            }
         case 'CHANGE_SPINNER_STATE':
-            return Object.assign({}, state, {
+            return { ...state,
                 spinnerIsActive: !state.spinnerIsActive
-            })
+            }
         default: return state
     }
 }

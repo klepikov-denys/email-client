@@ -8,7 +8,7 @@ let initialState = {
 const mailList = (state = initialState, action) => {
     switch (action.type) {
        case 'SENDING':
-          return Object.assign({}, state,{ 
+          return { ...state, 
             allMails: [
                 ...state.allMails,  
                 {
@@ -20,18 +20,18 @@ const mailList = (state = initialState, action) => {
                 id : action.id,
                 checked: false
                 }
-            ]});
+            ]};
         case 'CHECK_MAIL':
-            return Object.assign({}, state, {
+            return { ...state,
                 allMails: state.allMails.concat().map((obj) => { 
                     if(obj.id === action.id){
                         obj.checked = !obj.checked
                     }
                     return obj
                 })
-            })
+            }
         case 'CHECK_ALL_MAILS':
-            return Object.assign({}, state, {
+            return { ...state,
                 allMails: state.allMails.concat().map((obj) => { 
                     if (action.filterType === obj.type && !state.allMailsChecked){
                         obj.checked = true
@@ -41,9 +41,9 @@ const mailList = (state = initialState, action) => {
                     return obj
                 }),
                 allMailsChecked: !state.allMailsChecked,
-            })
+            }
         case 'DELETE_MAILS':
-            return Object.assign({}, state, {
+            return { ...state,
                 allMails: state.allMails.map((obj) => { 
                     if (obj.checked){
                         obj.type = 'TRASH'
@@ -51,19 +51,19 @@ const mailList = (state = initialState, action) => {
                     }
                     return obj
                 })
-            })
+            }
             case 'LOGIN':
-            return Object.assign({}, state, {
+            return { ...state,
                 allMails: []
-            })
+            }
         case 'REFRESH_MAILS':
-            return Object.assign({}, state, {
+            return { ...state,
                 allMails: action.mails
-            })
+            }
         case 'CHANGE_CHECKED_STATE':
-            return Object.assign({}, state,{
+            return { ...state,
                 allMailsChecked: false,  
-            })
+            }
         default:
             return state;
     }

@@ -22,7 +22,7 @@ function Mail({sender, text, type, recipient, id, checked}){
                 <input type='checkbox' checked={checked}
                     onChange={changeHandler}
                     disabled={type === 'TRASH'}
-                ></input>
+                />
             </form>
 
             <Link to={`/mail/${id}`}  className={'link'}>

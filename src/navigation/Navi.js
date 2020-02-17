@@ -1,32 +1,33 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import './Navi.css'
 import Button from 'react-bootstrap/Button'
 
 function Navi({handleClick}){
+    const handleBoundClick = useCallback((type) => handleClick.bind(this, type), [handleClick])
     
     return(
         <div className = 'naviBlockStyle'>
             <Button 
                 variant='outline-primary' 
-                onClick = {handleClick.bind(this, 'INBOX')}
+                onClick = {handleBoundClick('INBOX')}
                 className='naviBtnStyle'
             >Inbox</Button>
 
             <Button 
                 variant='outline-primary'
-                onClick = {handleClick.bind(this, 'IMPORTANT')}
+                onClick = {handleBoundClick('IMPORTANT')}
                 className='naviBtnStyle'
             >Important</Button>
 
             <Button 
                 variant='outline-primary'
-                onClick = {handleClick.bind(this, 'SENT')}      
+                onClick = {handleBoundClick('SENT')}      
                 className='naviBtnStyle'          
             >Sent</Button>
 
             <Button 
                 variant='outline-primary'
-                onClick = {handleClick.bind(this, 'TRASH')}
+                onClick = {handleBoundClick('TRASH')}
                 className='naviBtnStyle'
             >Trash</Button>
         </div>

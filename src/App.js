@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Navi from './navigation/Navi.jsx'
-import ButtonBar from './buttonBar/ButtonBar.jsx'
+import Navi from './navigation/Navi.js'
+import ButtonBar from './buttonBar/ButtonBar.js'
 import {Route, Switch, BrowserRouter as Router, Link} from 'react-router-dom'
 import Compose from './compose/Compose'
 import Message from './message/Message.jsx'
